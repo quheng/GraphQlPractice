@@ -3,3 +3,4 @@ venv/
 *.pdf
 .DS_Store
 test.py
+config.py
