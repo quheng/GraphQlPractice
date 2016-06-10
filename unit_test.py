@@ -5,4 +5,4 @@ import pytest
 import database
 
 def test_database():
-    assert database.test() == None
+    assert database.test()
