@@ -5,4 +5,7 @@ import pytest
 import database
 
 def test_database():
+    """
+    test database connection
+    """
     assert database.test()

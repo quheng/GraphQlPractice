@@ -1,7 +1,7 @@
 # coding=utf8
 # Author: quheng
 
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, scoped_session, sessionmaker
 from sqlalchemy import create_engine
 from sqlalchemy.ext.automap import automap_base
 
@@ -16,7 +16,7 @@ _engine += DATABASE_PWD + '@'
 _engine += DATABASE_ADDR + ':3306/'
 _engine += "crunchbase"
 _engine = create_engine(_engine)
-session = Session(_engine)
+session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=_engine))
 
 
 # reflect table
@@ -36,5 +36,8 @@ People = _Base.classes.cb_people
 Relationships = _Base.classes.cb_relationships
 
 def test():
+    """
+    test database connection
+    """
     res = "http://blog.seattlepi.nwsource.com/venture/archives/118242.asp"
-    return session.query(Acquisitions).filter(Acquisitions.id=='5').one().source_url == res
+    return session.query(Acquisitions).filter(Acquisitions.id == '5').one().source_url == res
