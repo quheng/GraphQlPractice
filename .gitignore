@@ -4,3 +4,4 @@ venv/
 .DS_Store
 test.py
 config.py
+*.cnf
