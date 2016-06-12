@@ -2,7 +2,32 @@
 use these project to practice GraphQL
 
 ## usage
-todo
+1. add config.py
+```
+touch ./django/mysite/mysite/config.py
+```
+a sample config,py
+```
+DATABASE_USER = "***"
+DATABASE_ADDR = "***"
+DATABASE_PWD = "***"
+```
+
+2. please ignore flask, I did not finish it. **Use Django**
+```
+cd django
+```
+
+3. install dependency
+```
+pip install -r requirements.txt
+```
+
+4. run
+```
+cd mysite
+```
+you can visit [http://127.0.0.1:8000/graphiql](http://127.0.0.1:8000/graphiql) to do some test
 
 ## test sample
 1.
