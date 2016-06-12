@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+
 class CbAcquisitions(models.Model):
     id = models.BigIntegerField(primary_key=True)
     acquisition_id = models.BigIntegerField()
