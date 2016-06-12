@@ -170,7 +170,13 @@ class FundsType(graphene.ObjectType):
     created_at = graphene.String()
     updated_at = graphene.String()
 
-# question
+    def resolve_investment(self, args, info):
+        id = self.object_id
+        if id:
+            cond = "investor_object_id='" + id + "'"
+        return objects_filter(cond)
+
+
 class InvestmentsType(graphene.ObjectType):
     id = graphene.String()
     funding_round_id = graphene.String()
@@ -195,6 +201,16 @@ class IposType(graphene.ObjectType):
     created_at = graphene.String()
     updated_at = graphene.String()
 
+    company = graphene.List(
+        ObjectsType,
+    )
+
+    def resolve_company(self, args, info):
+        id = self.object_id
+        if id:
+            cond = "id='" + id + "'"
+        return objects_filter(cond)
+
 
 class MilestonesType(graphene.ObjectType):
     id = graphene.String()
@@ -207,6 +223,15 @@ class MilestonesType(graphene.ObjectType):
     created_at = graphene.String()
     updated_at = graphene.String()
 
+    company = graphene.List(
+        ObjectsType,
+    )
+
+    def resolve_company(self, args, info):
+        id = self.object_id
+        if id:
+            cond = "id='" + id + "'"
+        return objects_filter(cond)
 
 class OfficesType(graphene.ObjectType):
     id = graphene.String()
@@ -225,6 +250,16 @@ class OfficesType(graphene.ObjectType):
     created_at = graphene.String()
     updated_at = graphene.String()
 
+    company = graphene.List(
+        ObjectsType,
+    )
+
+    def resolve_company(self, args, info):
+        id = self.object_id
+        if id:
+            cond = "id='" + id + "'"
+        return objects_filter(cond)
+
 
 class RelationshipsType(graphene.ObjectType):
     id = graphene.String()
@@ -238,3 +273,23 @@ class RelationshipsType(graphene.ObjectType):
     title = graphene.String()
     created_at = graphene.String()
     updated_at = graphene.String()
+
+    company = graphene.List(
+        ObjectsType,
+    )
+
+    def resolve_company(self, args, info):
+        id = self.relationship_object_id
+        if id:
+            cond = "id='" + id + "'"
+        return objects_filter(cond)
+
+    person = graphene.List(
+        ObjectsType,
+    )
+
+    def resolve_person(self, args, info):
+        id = self.person_object_id
+        if id:
+            cond = "id='" + id + "'"
+        return objects_filter(cond)
